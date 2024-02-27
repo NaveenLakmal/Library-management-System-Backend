@@ -4,6 +4,7 @@ import edu.icet.dto.Book;
 import edu.icet.entity.BookEntity;
 import edu.icet.repository.BookRepository;
 import edu.icet.service.BookService;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,17 +16,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
-    @Autowired
-    BookRepository repository;
 
-    ModelMapper mapper;
+    final BookRepository repository;
+    final ModelMapper mapper;
 
-    @Bean
-    public void setup() {
-        this.mapper = new ModelMapper();
-    }
+
 
     @Override
     public void addBook(Book book) {
@@ -48,6 +46,9 @@ public class BookServiceImpl implements BookService {
         return list;
 
     }
+
+
+
 
     @Override
     public boolean deleteBook(Long id) {

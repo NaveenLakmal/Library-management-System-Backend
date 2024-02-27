@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/book") // now here
 @RequiredArgsConstructor
 @CrossOrigin
 public class BookController {
@@ -26,6 +26,7 @@ public class BookController {
         service.addBook(book);
 
 
+
     }
 
     @GetMapping("/get")
@@ -34,13 +35,14 @@ public class BookController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteBook(@PathVariable Long id) {
-        return service.deleteBook(id) ? ResponseEntity.ok("Deleted") : ResponseEntity.notFound().build();
+    public String deleteBook(@PathVariable Long id) {
+        service.deleteBook(id);
+        return "Deleted";
 
     }
 
     @GetMapping("/search/{id}")
-    public Book getBookId(@PathVariable Long id){
-        return service.getBookId (id);
+    public Book getBookId(@PathVariable Long id) {
+        return service.getBookId(id);
     }
 }

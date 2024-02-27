@@ -1,12 +1,13 @@
 package edu.icet.service;
 
 import edu.icet.dto.Book;
-import edu.icet.entity.BookEntity;
 
 import java.util.List;
 
 public interface BookService {
-    void addBook(Book book);
+
+
+     void addBook(Book book);
     List<Book> getBooks();
 
     boolean deleteBook(Long id);
